@@ -2,13 +2,24 @@ const specialCharactersPattern = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/
 const APIkey = `130d5e4e9656cfdd88d49e993e0b0ea8`
 const limitOfTheLocations = 1
 
+//header elements
 const cityNameInput = document.querySelector(".cityNameInput")
 const cityNameForm = document.querySelector(".cityNameForm")
 const metricSystemChangeBtn = document.querySelector(".metricSystemChangeBtn")
+//current weather elements
 const currentWeatherImg = document.querySelector(".currentWeatherImg")
+const weatherDescription = document.querySelector(".weatherDescription")
+const currentTemperature = document.querySelector(".currentTemperature")
+const minmaxTemperature = document.querySelector(".minmaxTemperature")
+const currentTemperatureHowFeels = document.querySelector(".currentTemperatureHowFeels")
+const windSpeed = document.querySelector(".windSpeed")
+const humidity = document.querySelector(".humidity")
 
 const TEMPERATURE_LOCAL_STORAGE_KEY = 'temperatureKey'
 let celsiusFarenheit = JSON.parse(localStorage.getItem(TEMPERATURE_LOCAL_STORAGE_KEY)) || false
+let temperatureSymbol
+let windSpeedSymbol
+
 
 
 //passes input value to the geocoding function
@@ -58,8 +69,6 @@ async function getWeatherData(latitude, longitude){
     }
 
     let data = await weatherResponse.json()
-    //console.log(data.main.temp)
-    //console.log(data.weather[0].description)
     console.log(data)
     displayCurrentWeather(data)
 }
@@ -67,14 +76,27 @@ async function getWeatherData(latitude, longitude){
 
 function displayCurrentWeather(data){
     displayWeatherIcon(data)
-
-    
+    checkTempSymbol()
+    //weather description
+    let description = data.weather[0].description
+    description.toString()
+    description = description[0].toUpperCase() + description.slice(1)
+    weatherDescription.innerHTML = description
+    //current temperature
+    currentTemperature.innerHTML = `Temperature: ${data.main.temp}${temperatureSymbol}` 
+    //how it feels like
+    currentTemperatureHowFeels.innerHTML = `How it feels: ${data.main.feels_like}${temperatureSymbol}`
+    //minmax temperature
+    minmaxTemperature.innerHTML = `Min/Max temperature: ${data.main.temp_min}${temperatureSymbol} / ${data.main.temp_max}${temperatureSymbol}`
+    //humidity
+    humidity.innerHTML = `Humidity: ${data.main.humidity}%`
+    //wind speed
+    windSpeed.innerHTML = `Wind speed: ${data.wind.speed}${windSpeedSymbol}`
 }
 
 function displayWeatherIcon(data){
     let weatherMain = data.weather[0].main
-    let weatherDescription = data.weather[0].description
-    console.log(weatherDescription)
+    let weatherDescriptionData = data.weather[0].description
     let hours = new Date().getHours
 
     switch (weatherMain){
@@ -89,17 +111,17 @@ function displayWeatherIcon(data){
             currentWeatherImg.src = "http://openweathermap.org/img/wn/13d@2x.png"
         break
         case "Clouds":
-            if(weatherDescription == "few clouds"){
+            if(weatherDescriptionData == "few clouds"){
                 if(hours > 6 && hours < 19){
                     currentWeatherImg.src = "http://openweathermap.org/img/wn/02d@2x.png"
                 } else {
                     currentWeatherImg.src = "http://openweathermap.org/img/wn/02n@2x.png"
                 }
             }
-            if(weatherDescription == "scattered clouds"){
+            if(weatherDescriptionData == "scattered clouds"){
                 currentWeatherImg.src = "http://openweathermap.org/img/wn/03d@2x.png"
             }
-            if(weatherDescription == "broken clouds" || weatherDescription == "overcast clouds"){
+            if(weatherDescriptionData == "broken clouds" || weatherDescriptionData == "overcast clouds"){
                 currentWeatherImg.src = "http://openweathermap.org/img/wn/03d@2x.png"
             }
         break
@@ -133,12 +155,13 @@ function displayWeatherIcon(data){
 
 
 
+//utility functions
 
-
+//changes boolean value for metric system
 metricSystemChangeBtn.onclick = function(){
     if (!celsiusFarenheit){
         celsiusFarenheit = true
-    } else { celsiusFarenheit = false }
+    } else { celsiusFarenheit = false; }
     save()
 } 
 
@@ -147,6 +170,17 @@ function checkForSpecialCharacters(string){
         return false
     } else{
         return true
+    }
+}
+
+function checkTempSymbol(){ 
+    if (!celsiusFarenheit){ 
+        temperatureSymbol = "°C" 
+        windSpeedSymbol = "km/h"
+    } 
+    else { 
+        temperatureSymbol = "°F" 
+        windSpeedSymbol = "knots" 
     }
 }
 

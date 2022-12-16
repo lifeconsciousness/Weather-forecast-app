@@ -8,11 +8,34 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <form class="cityNameForm">
-        <p>Enter your city name</p>
-        <input type="text" name="cityNameInput" class="cityNameInput">
-        <button type="submit">Submit</button>
-    </form>
+    <section>
+        <header class="header">
+            
+            <form class="cityNameForm">
+                <input type="text" name="cityNameInput" class="cityNameInput" placeholder="Enter name of the place where you live">
+                <button type="submit">Search</button>
+            </form>
+
+            <button class="metricSystemChangeBtn">°C/°F</button>
+
+        </header>
+    </section>
+
+    <section class="current weather">
+        <h2>Current weather in <span class="cityName"></span></h2>
+        <img src="http://openweathermap.org/img/wn/01d@2x.png" alt="current weather picture" class="currentWeatherImg">
+        <p class="weatherDescription"></p>
+        <p class="currentTemperature"></p>
+        <p class="minmaxTemperature"></p>
+        <p class="currentTemperatureHowFeels"></p>
+        <p class="windSpeed"></p>
+        <p class="humidity"></p>
+    </section>
+
+    <section class="forecast">
+
+    </section>
+
 
     <script src="/js/script.js"></script>
 </body>

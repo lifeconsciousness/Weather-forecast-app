@@ -41,7 +41,7 @@ cityNameForm.addEventListener("submit", (e)=>{
 async function getGeoData(cityName){
     try{
         let cityLocationResponse
-        cityLocationResponse = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=${limitOfTheLocations.toString()}&appid=${APIkey}&units=metric`)
+        cityLocationResponse = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=${limitOfTheLocations.toString()}&appid=${APIkey}&units=metric`)
         
         if(cityLocationResponse.ok){
             let data = await cityLocationResponse.json()

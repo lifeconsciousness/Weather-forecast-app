@@ -5,38 +5,48 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Know the current weather</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-    <section>
-        <header class="header">
-            
-            <form class="cityNameForm">
-                <input type="text" name="cityNameInput" class="cityNameInput" placeholder="Enter name of the place where you live">
-                <button type="submit">Search</button>
-            </form>
 
-            <button class="metricSystemChangeBtn">°C/°F</button>
+    <!-- SVG background -->
+    <object data="./img/blob-scene-haikei(1).svg" type="image/svg+xml" class="app-background" id="black-bg"></object>
+    <!-- <object data="./blob-scene-haikei.svg" type="image/svg+xml" class="app-background" id="white-bg"></object> -->
 
-        </header>
-    </section>
+    <div class="app-container">
+        
+            <section>
+                <header class="header">
+                    
+                    <form class="cityNameForm">
+                        <input type="text" name="cityNameInput" class="cityNameInput" placeholder="Your city name">
+                        <button type="submit" class="searchBtn">Search</button>
+                    </form>
+        
+                    <button class="metricSystemChangeBtn">°C/°F</button>
+        
+                </header>
+            </section>
+        
+            <section class="currentWeather">
+                <div class="info-container">
+                    <h2 class="cityName"></h2>
+                    <img src="" class="currentWeatherImg">
+                    <div class="weatherDataContainer">
+                        <p class="weatherDescription"></p>
+                        <p class="currentTemperature"></p>
+                        <p class="currentTemperatureHowFeels"></p>
+                        <p class="minmaxTemperature"></p>
+                        <p class="humidity"></p>
+                        <p class="windSpeed"></p>
+                    </div>
+        
+                </div>
+            </section>
 
-    <section class="current weather">
-        <h2 class="cityName"></h2>
-        <img src="http://openweathermap.org/img/wn/01d@2x.png" alt="current weather picture" class="currentWeatherImg">
-        <p class="weatherDescription"></p>
-        <p class="currentTemperature"></p>
-        <p class="currentTemperatureHowFeels"></p>
-        <p class="minmaxTemperature"></p>
-        <p class="humidity"></p>
-        <p class="windSpeed"></p>
-    </section>
-
-    <section class="forecast">
-
-    </section>
+    </div>
 
 
-    <script src="/js/script.js"></script>
+    <script src="./js/script.js"></script>
 </body>
 </html>

@@ -162,6 +162,8 @@ metricSystemChangeBtn.onclick = function(){
     if (!celsiusFarenheit){
         celsiusFarenheit = true
     } else { celsiusFarenheit = false; }
+    let inputValue = cityNameInput.value
+    getGeoData(inputValue)
     save()
 } 
 

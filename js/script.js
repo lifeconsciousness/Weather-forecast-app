@@ -102,50 +102,50 @@ function displayWeatherIcon(data){
     switch (weatherMain){
         case "Clear":
             if(hours > 6 && hours < 19){
-                currentWeatherImg.src = "http://openweathermap.org/img/wn/01d@2x.png"
+                currentWeatherImg.src = "https://openweathermap.org/img/wn/01d@2x.png"
             } else {
-                currentWeatherImg.src = "http://openweathermap.org/img/wn/01n@2x.png"
+                currentWeatherImg.src = "https://openweathermap.org/img/wn/01n@2x.png"
             }
         break
         case "Snow":
-            currentWeatherImg.src = "http://openweathermap.org/img/wn/13d@2x.png"
+            currentWeatherImg.src = "https://openweathermap.org/img/wn/13d@2x.png"
         break
         case "Clouds":
             if(weatherDescriptionData == "few clouds"){
                 if(hours > 6 && hours < 19){
-                    currentWeatherImg.src = "http://openweathermap.org/img/wn/02d@2x.png"
+                    currentWeatherImg.src = "https://openweathermap.org/img/wn/02d@2x.png"
                 } else {
-                    currentWeatherImg.src = "http://openweathermap.org/img/wn/02n@2x.png"
+                    currentWeatherImg.src = "https://openweathermap.org/img/wn/02n@2x.png"
                 }
             }
             if(weatherDescriptionData == "scattered clouds"){
-                currentWeatherImg.src = "http://openweathermap.org/img/wn/03d@2x.png"
+                currentWeatherImg.src = "https://openweathermap.org/img/wn/03d@2x.png"
             }
             if(weatherDescriptionData == "broken clouds" || weatherDescriptionData == "overcast clouds"){
-                currentWeatherImg.src = "http://openweathermap.org/img/wn/03d@2x.png"
+                currentWeatherImg.src = "https://openweathermap.org/img/wn/03d@2x.png"
             }
         break
         case "Thunderstorm":
-            currentWeatherImg.src = "http://openweathermap.org/img/wn/11d@2x.png"
+            currentWeatherImg.src = "https://openweathermap.org/img/wn/11d@2x.png"
         break
         case "Rain":
             if(hours > 6 && hours < 19){
-                currentWeatherImg.src = "http://openweathermap.org/img/wn/10d@2x.png"
+                currentWeatherImg.src = "https://openweathermap.org/img/wn/10d@2x.png"
             } else {
-                currentWeatherImg.src = "http://openweathermap.org/img/wn/09n@2x.png"
+                currentWeatherImg.src = "https://openweathermap.org/img/wn/09n@2x.png"
             }
         break
         case "Snow":
-            currentWeatherImg.src = "http://openweathermap.org/img/wn/13d@2x.png"
+            currentWeatherImg.src = "https://openweathermap.org/img/wn/13d@2x.png"
         break
         case "Drizzle":
-            currentWeatherImg.src = "http://openweathermap.org/img/wn/09d@2x.png"
+            currentWeatherImg.src = "https://openweathermap.org/img/wn/09d@2x.png"
         break
         case "Mist":
-            currentWeatherImg.src = "http://openweathermap.org/img/wn/50d@2x.png"
+            currentWeatherImg.src = "https://openweathermap.org/img/wn/50d@2x.png"
         break
         case "Fog":
-            currentWeatherImg.src = "http://openweathermap.org/img/wn/50d@2x.png"
+            currentWeatherImg.src = "https://openweathermap.org/img/wn/50d@2x.png"
         break
     }
 }
